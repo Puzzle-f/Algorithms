@@ -1,7 +1,6 @@
 package sample;
 
 import java.util.*;
-import java.util.Collections;
 
 public class AlgorithmsJava {
 //1.1 Приведите пример алгоритмов и структур данных из жизни.
@@ -139,10 +138,10 @@ public class AlgorithmsJava {
         System.out.println("время получения элемента по индексу " + timeResult5 + " мс");
 
         //    Задание 3.4
-        System.out.println(linkedList);
+//        System.out.println(linkedList);
         linkedList.add(12);
         linkedList.add(2, 43);
-        System.out.println(linkedList);
+//        System.out.println(linkedList);
         linkedList.addFirst(12);
         linkedList.remove(5);
 
@@ -155,15 +154,47 @@ public class AlgorithmsJava {
 ListIterator<Products> iterator1 = productsLinkedList.listIterator();
 ListIterator<Products> iterator2 = productsLinkedList.listIterator();
 
-Products products;
-    while(iterator1.hasPrevious()){
-        products = iterator1.previous();
-        System.out.println(products.getId());
-    }
+//    Задание 4.1
+        long t1 = System.nanoTime();
+    Stack<Products> stackProducts = new Stack<>();
+    stackProducts.push(product1);
+    stackProducts.push(product2);
+    stackProducts.push(new Products(new int[] {6, 8, 9}));
+    stackProducts.peek().getId();
+    stackProducts.pop();
+    stackProducts.peek().getId();
+        long t2 = System.nanoTime() - t1;
+        System.out.println("время выполнения задания 4.1: " + t2);
 
-    while(iterator2.hasNext()){
-        System.out.println(iterator2.next().getId());
-    }
+//    Задание 4.2
+        t1 = System.nanoTime();
+   Queue<Products> productsQueue = new LinkedList<>();
+   productsQueue.offer(product1);
+   productsQueue.add(product2);
+   productsQueue.offer(product3);
+   productsQueue.offer(new Products(new int[] {4,5,6,7,8}));
+   productsQueue.poll();
+   System.out.println("вывод элементов");
+   while(!productsQueue.isEmpty()){
+       productsQueue.poll().getId();
+   }
+        t2 = System.nanoTime() - t1;
+        System.out.println("время выполнения задания 4.2: " + t2);
+
+//    Задание 4.3
+        t1 = System.nanoTime();
+        Deque<Products> productsDeque = new ArrayDeque<>();
+        productsDeque.addFirst(product1);
+        productsDeque.addLast(product2);
+        productsDeque.offerFirst(product3);
+        productsDeque.removeFirst();
+        while(!productsDeque.isEmpty()){
+            productsDeque.pollFirst().getId();
+        }
+        t2 = System.nanoTime() - t1;
+        System.out.println("время выполнения задания 4.3: " + t2);
+
+
     }
 
     public static int[] mySort(int[] array){
@@ -278,6 +309,24 @@ public static int[] createArray(int elements){
 //    Задание 3.5
 //    Реализуйте итератор на основе связанных списков из задания 3.4 и выполните базовые операции итератора.
 //    Оцените время выполнения операций с помощью базового метода System.nanoTime()
+
+//    Задание 4.1
+//    На основе данных объектного списка из задания 3.4 реализуйте простой стек и его базовые методы.
+//    Оцените время выполнения операций с помощью базового метода System.nanoTime().
+//    Задание 4.2
+//    На основе данных объектного списка из задания 3.4 реализуйте простую очередь и его базовые методы.
+//    Реализуйте вспомогательные методы.
+//    Оцените время выполнения операций с помощью базового метода System.nanoTime().
+//    Задание 4.3
+//    На основе данных объектного списка из задания 3.4 реализуйте простой дек и его базовые методы.
+//    Оцените время выполнения операций с помощью базового метода System.nanoTime().
+//    Задание 4.4
+//    Реализуйте приоритетную очередь на основе ссылочных типов данных, например, integer.
+//    Оцените время выполнения операций с помощью базового метода System.nanoTime().
+//    Задание 4.5
+//    На основе данных из задания 4.1 и 4.2, реализуйте стек и очередь на базе связанного списка.
+//    Оцените время выполнения операций с помощью базового метода System.nanoTime().
+
 
 
 
