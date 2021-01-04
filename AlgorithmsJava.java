@@ -1,7 +1,7 @@
 package sample;
 
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
+import java.util.Collections;
 
 public class AlgorithmsJava {
 //1.1 Приведите пример алгоритмов и структур данных из жизни.
@@ -25,6 +25,7 @@ public class AlgorithmsJava {
         System.out.println("id " + Arrays.toString(id));
         return id;
     }
+
 
     public void productSearch(int idSearch){
              boolean isSearch = false;
@@ -71,11 +72,13 @@ public class AlgorithmsJava {
     }
 
     public static void main(String[] args) {
-//        Products product1 = new Products(new int[]{1,2,3});
+        Products product1 = new Products(new int[]{1,2,3});
+
 //        product1.getId();
-//        product1.productSearch(5);
+        product1.productSearch(5);
+        product1.getId();
 //        product1.productSearch(2);
-//        Products product2 = new Products(new int[]{4,5,6});
+        Products product2 = new Products(new int[]{4,5,6});
 //        product2.getId();
 //        product2.productSearch(5);
 //        product2.productSearch(2);
@@ -89,22 +92,78 @@ public class AlgorithmsJava {
         Products product3 = new Products(array);
         mySort(array);
 
-//    Задание 2.2
-        product3.productSearch(12);
-        product3.productSearchBinary(12);
-//    Задание 2.3
-        int[] array400Elements = createArray(400);
-        mySort(array400Elements);
-//    Задание 2.4
-        mySortBubble(array400Elements);
-//    Задание 2.5
-        mySortChoice(array400Elements);
-//    Задание 2.6
-        mySortInsert(array400Elements);
+////    Задание 2.2
+//        product3.productSearch(12);
+//        product3.productSearchBinary(12);
+////    Задание 2.3
+//        int[] array400Elements = createArray(400);
+//        mySort(array400Elements);
+////    Задание 2.4
+//        mySortBubble(array400Elements);
+////    Задание 2.5
+//        mySortChoice(array400Elements);
+////    Задание 2.6
+//        mySortInsert(array400Elements);
 
+        //    Задание 3.1
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        long timeStart = System.nanoTime();
+        for (int i = 0; i < array.length; i++) {
+            arrayList.add(array[i]);
+        }
+        long timeResult = System.nanoTime() - timeStart;
+        System.out.println("время добавления элементов в ArrayList " + timeResult + " мс");
 
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        long timeStart2 = System.nanoTime();
+        for (int i = 0; i < array.length; i++) {
+            linkedList.add(array[i]);
+        }
+        long timeResult2 = System.nanoTime() - timeStart2;
+        System.out.println("время добавления элементов в linkedList " + timeResult2 + " мс");
 
+        //    Задание 3.2
+        long timeStart3 = System.nanoTime();
+        arrayList.add(7);
+        long timeResult3 = System.nanoTime() - timeStart3;
+        System.out.println("время добавления элемента в коллекцию " + timeResult3 + " мс");
 
+        long timeStart4 = System.nanoTime();
+        arrayList.remove(7);
+        long timeResult4 = System.nanoTime() - timeStart4;
+        System.out.println("время удаления элемента из коллекции " + timeResult4 + " мс");
+
+        long timeStart5 = System.nanoTime();
+        arrayList.get(5);
+        long timeResult5 = System.nanoTime() - timeStart5;
+        System.out.println("время получения элемента по индексу " + timeResult5 + " мс");
+
+        //    Задание 3.4
+        System.out.println(linkedList);
+        linkedList.add(12);
+        linkedList.add(2, 43);
+        System.out.println(linkedList);
+        linkedList.addFirst(12);
+        linkedList.remove(5);
+
+        LinkedList<Products> productsLinkedList = new LinkedList<>();
+        productsLinkedList.add(product1);
+        productsLinkedList.add(product2);
+        productsLinkedList.add(product3);
+
+        //    Задание 3.5
+ListIterator<Products> iterator1 = productsLinkedList.listIterator();
+ListIterator<Products> iterator2 = productsLinkedList.listIterator();
+
+Products products;
+    while(iterator1.hasPrevious()){
+        products = iterator1.previous();
+        System.out.println(products.getId());
+    }
+
+    while(iterator2.hasNext()){
+        System.out.println(iterator2.next().getId());
+    }
     }
 
     public static int[] mySort(int[] array){
@@ -202,5 +261,51 @@ public static int[] createArray(int elements){
 //    На основе массива данных из задания 2.3 реализуйте алгоритм сортировки методом вставки.
 //    Оцените сортировку с помощью базового класса System.nanoTime().
 //    Сравните с временем выполнения алгоритмов сортировки из прошлых заданий 2.3, 2.4 и 2.5.
+
+
+
+//    Задание 3.1
+//    На основе массива из домашнего задания 2.1 реализуйте простой список и коллекцию.
+//    Оцените время выполнения преобразования.
+//    Задание 3.2
+//    На основе списка из задания 3.1 реализуйте основные методы добавления, удаления и получения объекта или элемента из списка.
+//    Оценить выполненные методы с помощью базового класса System.nanoTime().
+//    Задание 3.3
+//    Реализуйте простой односвязный список и его базовые методы.
+//    Задание 3.4
+//    На основе списка из задания 3.1 реализуйте простой двусторонний список и его базовые методы.
+//    Реализуйте список заполненный объектами из вашего класса из задания 1.3
+//    Задание 3.5
+//    Реализуйте итератор на основе связанных списков из задания 3.4 и выполните базовые операции итератора.
+//    Оцените время выполнения операций с помощью базового метода System.nanoTime()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
